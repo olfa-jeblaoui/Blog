@@ -13,8 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::get('/', function () {
-   // return view('welcome');
-//});
-route::get('/Accueil','ArticleController@Accueil');
-route::get('/TableauxBord','AtricleController@TableauxBord');
+Route::get('/', function () {
+  return redirect()->to('articles/accueil');
+});
+route::get('articles/accueil','AController@accueil');
+route::get('/TableauxBord','ArticleController@TableauxBord');
+//resources
+route::resource('articles','AController');
+
+//login
+Auth::routes();
+
+Route::get('/dashboard', 'DashboardController@accueil')->name('dashboard');
